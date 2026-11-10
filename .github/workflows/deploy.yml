@@ -19,9 +19,12 @@ jobs:
       - name: Setting Up Java
         uses: actions/setup-java@v5
         with:
-           distribution: temurin
-           java-version: 21
-           cache: maven
+            distribution: temurin
+            java-version: 21
+            cache: maven
+
+      - name: Make Maven Wrapper Executable
+        run: chmod +x mvnw
 
       - name: Build Jar
         run: ./mvnw clean package -DskipTests
