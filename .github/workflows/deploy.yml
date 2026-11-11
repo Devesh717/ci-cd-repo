@@ -51,12 +51,12 @@ jobs:
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.2.0
         with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            docker pull ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
-            docker stop springboot-app || true
-            docker rm springboot-app || true
-            docker run -d --name springboot-app --restart unless-stopped -p 8081:8081 ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
-            docker image prune -f
+            host: ${{ secrets.EC2_HOST }}
+            username: ${{ secrets.EC2_USER }}
+            key: ${{ secrets.EC2_SSH_KEY }}
+            script: |
+              sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
+              sudo docker stop springboot-app || true
+              sudo docker rm springboot-app || true
+              sudo docker run -d --name springboot-app --restart unless-stopped -p 8081:8081 ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
+              sudo docker image prune -f
