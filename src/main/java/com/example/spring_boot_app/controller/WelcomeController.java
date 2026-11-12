@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class WelcomeController {
 
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<String> welcome() {
         return ResponseEntity.ok("Welcome to spring boot app");
     }
